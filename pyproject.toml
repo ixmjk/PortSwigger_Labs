@@ -1,0 +1,11 @@
+[project]
+name = "portswigger-labs-launcher"
+version = "0.1.0"
+description = "Universal PortSwigger Web Security Academy lab launcher"
+requires-python = ">=3.10"
+dependencies = []
+
+# The launcher is intentionally stdlib-only (urllib/subprocess) so it has no
+# external dependencies. Each individual lab solver under <DIFFICULTY>/<LAB>/
+# is its own uv project and is launched via `uv run` from its own directory,
+# preserving its dependencies.

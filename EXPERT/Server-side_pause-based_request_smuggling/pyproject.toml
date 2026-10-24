@@ -1,0 +1,7 @@
+[project]
+name = "pause-based-smuggler"
+version = "1.0.0"
+description = "Automated solver for the PortSwigger 'Server-side pause-based request smuggling' lab"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []

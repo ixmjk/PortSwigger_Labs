@@ -1,0 +1,15 @@
+[project]
+name = "portswigger-cache-poisoning-combining"
+version = "0.1.0"
+description = "Autonomous solver for the PortSwigger 'Combining web cache poisoning vulnerabilities' (EXPERT) lab"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.31",
+]
+
+[project.scripts]
+solve = "solve:main"
+
+[tool.uv]
+package = false
