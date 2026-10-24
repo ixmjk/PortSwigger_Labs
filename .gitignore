@@ -173,8 +173,8 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-# Cursor  
-#  Cursor is an AI-powered code editor.`.cursorignore` specifies files/directories to 
+# Cursor
+#  Cursor is an AI-powered code editor.`.cursorignore` specifies files/directories to
 #  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
@@ -218,3 +218,40 @@ htmlcov/
 *.orig
 *.swp
 *~
+
+# =============================================================================
+# macOS — Finder, Spotlight, metadata, caches, and temporary files
+# =============================================================================
+
+# Finder metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS custom folder icons
+Icon?
+
+# Spotlight indexing
+.Spotlight-V100
+.metadata_never_index
+
+# Trash
+.Trashes
+.Trash-*
+
+# Filesystem metadata
+.fseventsd
+.DocumentRevisions-V100
+.TemporaryItems
+.com.apple.timemachine.donotpresent
+
+# Resource forks / AppleDouble files
+._*
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Quick Look / Finder thumbnails
+.directory
