@@ -4,8 +4,8 @@
 
 ### One lab URL. One command. The right solution.
 
-[![Labs solved](https://img.shields.io/badge/Labs%20solved-3%20%2F%20274-FF6633?style=for-the-badge)](https://portswigger.net/web-security/all-labs)
-[![Expert solvers](https://img.shields.io/badge/Expert%20solvers-3-00A884?style=for-the-badge)](#-supported-labs)
+[![Labs solved](https://img.shields.io/badge/Labs%20solved-4%20%2F%20274-FF6633?style=for-the-badge)](https://portswigger.net/web-security/all-labs)
+[![Expert solvers](https://img.shields.io/badge/Expert%20solvers-4-00A884?style=for-the-badge)](#-supported-labs)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Powered by uv](https://img.shields.io/badge/Powered%20by-uv-5C3EE8?style=for-the-badge)](https://docs.astral.sh/uv/)
 [![Hermes Agent](https://img.shields.io/badge/AI%20assisted-Hermes%20Agent-7C60D5?style=for-the-badge)](https://github.com/NousResearch/hermes-agent)
@@ -20,7 +20,7 @@
 
 Rather than manually searching through scripts, the **universal launcher** reads the lab name from your active lab URL, identifies a matching solver, executes it in its own `uv` environment, and reports the result.
 
-**Current coverage: 3 of 274 labs (~1.10%)** — with three supported **Expert** challenges. The denominator is based on PortSwigger's published Academy total, checked on **October 24, 2026**; the catalog changes over time.
+**Current coverage: 4 of 274 labs (~1.46%)** — with four supported **Expert** challenges. The denominator is based on PortSwigger's published Academy total, checked on **October 24, 2026**; the catalog changes over time.
 
 ### ✨ Why use it?
 
@@ -57,6 +57,7 @@ If a lab is unsupported, ambiguous, expired, or unreachable, the launcher report
 | 🔴 **Expert** | [Server-side pause-based request smuggling](https://portswigger.net/web-security/request-smuggling/browser/pause-based-desync/lab-server-side-pause-based-request-smuggling) | HTTP request desynchronization |
 | 🔴 **Expert** | [Combining web cache poisoning vulnerabilities](https://portswigger.net/web-security/web-cache-poisoning/exploiting-design-flaws/lab-web-cache-poisoning-combining-vulnerabilities) | Chained web cache poisoning |
 | 🔴 **Expert** | [JWT authentication bypass via algorithm confusion with no exposed key](https://portswigger.net/web-security/jwt/algorithm-confusion/lab-jwt-authentication-bypass-via-algorithm-confusion-with-no-exposed-key) | JWT algorithm confusion + RSA modulus recovery |
+| 🔴 **Expert** | [Exploiting exact-match cache rules for web cache deception](https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-exact-match-cache-rules) | Web cache deception + CSRF |
 
 Find their source code and case studies inside [`EXPERT/`](EXPERT/). The long-term target is **every Academy lab**, not just the Expert category.
 
@@ -64,16 +65,22 @@ Find their source code and case studies inside [`EXPERT/`](EXPERT/). The long-te
 
 | Flag | Description |
 |---|---|
-| `--url URL` | Lab URL (required unless `--list` is used). |
+| `--url URL` | Lab URL (required unless `--list` or `--clean` is used). |
 | `--list` | List all available lab solvers. |
 | `--dry-run` | Identify the solver without executing it. |
 | `--root DIR` | Use an alternative labs root. |
 | `--timeout S` | Change the title-fetch timeout (default: 20 seconds). |
+| `--clean` | Preview ignored untracked files in this repository and ask before removing them. |
 
 ```bash
 # Preview the selected solver without running the lab
 uv run python solve.py --url "https://YOUR-LAB-ID.web-security-academy.net/" --dry-run
+
+# Remove ignored research artifacts and local runtime files after reviewing the list
+uv run python solve.py --clean
 ```
+
+`--clean` uses Git's ignored-file rules to remove ignored, untracked items only (the equivalent of `git clean -fdX`). It lists candidates and requires an interactive confirmation. Tracked files and non-ignored files—including source and documentation not yet committed—are preserved. This is useful for clearing local research artifacts before reviewing the project context; check the list carefully because ignored evidence and logs are deleted.
 
 The launcher streams the lab solver's output and propagates its exit status. **Exit code `0`** means the selected solver reported success; **exit code `2`** means the launcher couldn't safely find or start a solver; other nonzero exit codes are returned by the matched solver.
 
@@ -86,24 +93,20 @@ PortSwigger_Labs/
 ├── pyproject.toml
 ├── uv.lock
 ├── assets/
-│   └── portswigger-labs-banner.png
+│   └── banner.png
 ├── tests/                        # Launcher tests
 └── EXPERT/
     ├── Combining-web-cache-poisoning-vulnerabilities/
     │   ├── solve.py
     │   ├── pyproject.toml
     │   ├── uv.lock
-    │   └── *.md                   # Case studies and notes
-    ├── JWT-authentication-bypass-via-algorithm-confusion-with-no-exposed-key/
+    │   └── *.md                   # Case study and notes
+    ├── Exploiting-exact-match-cache-rules-for-web-cache-deception/
     │   ├── solve.py
     │   ├── pyproject.toml
     │   ├── uv.lock
     │   └── *.md
-    └── Server-side_pause-based_request_smuggling/
-        ├── solve.py
-        ├── pyproject.toml
-        ├── uv.lock
-        └── *.md
+    └── ...                       # Remaining lab folders follow the same pattern
 ```
 
 Each lab is a separate `uv` project. Large experimental artifacts and local environments aren't needed in a public clone.

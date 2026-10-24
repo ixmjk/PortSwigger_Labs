@@ -4,6 +4,8 @@ Universal PortSwigger Web Security Academy lab launcher.
 
 Usage:
     uv run python solve.py --url "https://<LAB_ID>.web-security-academy.net"
+    uv run python solve.py --list
+    uv run python solve.py --clean
 
 What it does:
   1. Fetches the lab URL and reads the lab name from the page <title>.
@@ -177,6 +179,38 @@ def print_solvers(solvers: list) -> None:
         print(f"   [{s['difficulty']}] {s['lab']}\n        {s['path']}")
 
 
+def clean_ignored(repo_root: str, *, confirm: bool = False,
+                  expected: list[str] | None = None) -> tuple[list[str], bool]:
+    """Preview/remove ignored untracked files using Git's ignore rules.
+
+    Tracked files and non-ignored untracked files are never removed. The caller
+    is responsible for obtaining explicit confirmation before setting confirm.
+    """
+    repo_root = os.path.realpath(repo_root)
+    top = subprocess.run(["git", "-C", repo_root, "rev-parse", "--show-toplevel"],
+                        capture_output=True, text=True)
+    if top.returncode != 0 or os.path.realpath(top.stdout.strip()) != repo_root:
+        raise ValueError(f"not a Git repository root: {repo_root}")
+
+    preview = subprocess.run(["git", "-C", repo_root, "clean", "-ndX", "--"],
+                             capture_output=True, text=True)
+    if preview.returncode != 0:
+        raise RuntimeError(preview.stderr.strip() or "git clean preview failed")
+    candidates = [line.removeprefix("Would remove ") for line in preview.stdout.splitlines()
+                  if line.startswith("Would remove ")]
+    if not candidates or not confirm:
+        return candidates, False
+    if expected is not None and candidates != expected:
+        raise RuntimeError("ignored paths changed after preview; rerun --clean and review the updated list")
+
+    result = subprocess.run(["git", "-C", repo_root, "clean", "-fdX", "--"],
+                            capture_output=True, text=True)
+    if result.returncode != 0:
+        raise RuntimeError(result.stderr.strip() or "git clean failed")
+    return candidates, True
+
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(
         description="Universal PortSwigger lab launcher: identify the lab from the "
@@ -186,7 +220,7 @@ def main() -> int:
                "  uv run python solve.py --url https://<id>.web-security-academy.net\n"
                "  uv run python solve.py --url <url> --dry-run\n"
                "  uv run python solve.py --list\n")
-    ap.add_argument("--url", help="Full lab URL (required unless --list is used)")
+    ap.add_argument("--url", help="Full lab URL (required unless --list or --clean is used)")
     ap.add_argument("--root", default=DEFAULT_ROOT,
                     help=f"Labs root to search (default: {DEFAULT_ROOT})")
     ap.add_argument("--timeout", type=float, default=FETCH_TIMEOUT_S,
@@ -195,10 +229,42 @@ def main() -> int:
                     help="Identify the lab and print the launch command; do not run it")
     ap.add_argument("--list", action="store_true",
                     help="List every available solver under --root and exit")
+    ap.add_argument("--clean", action="store_true",
+                    help="Remove ignored untracked files in this repository (asks before deletion)")
     args = ap.parse_args()
 
+    if args.clean:
+        if args.url or args.list:
+            ap.error("--clean cannot be combined with --url or --list")
+        repo_root = os.path.dirname(os.path.realpath(__file__))
+        try:
+            candidates, _ = clean_ignored(repo_root, confirm=False)
+        except (ValueError, RuntimeError) as e:
+            print(f"[clean] ERROR: {e}", file=sys.stderr)
+            return 2
+        if not candidates:
+            print("[clean] No ignored untracked files found.")
+            return 0
+        print("[clean] The following ignored untracked paths will be removed:")
+        for item in candidates:
+            print(f"  {item}")
+        try:
+            answer = input("[clean] Continue? [y/N] ").strip().lower()
+        except EOFError:
+            answer = ""
+        if answer not in {"y", "yes"}:
+            print("[clean] Cancelled; nothing removed.")
+            return 0
+        try:
+            _, removed = clean_ignored(repo_root, confirm=True, expected=candidates)
+        except (ValueError, RuntimeError) as e:
+            print(f"[clean] ERROR: {e}", file=sys.stderr)
+            return 2
+        print("[clean] Removed ignored untracked files.") if removed else print("[clean] Nothing remained to remove.")
+        return 0
+
     if not args.url and not args.list:
-        ap.error("--url is required (or use --list)")
+        ap.error("--url is required (or use --list or --clean)")
 
     # --list: show what is available, then exit
     if args.list:
