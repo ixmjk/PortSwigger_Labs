@@ -41,8 +41,11 @@ the solver needs nothing else (no hardcoded instance values).
 
 ## Pending (only user actions)
 
-- Manual test of the new solver + global launcher (user runs the command above).
-- Explicit approval to commit (all repo changes are currently uncommitted).
+- ~~Manual test of the new solver + global launcher~~ — **DONE, user approved** (2026-10-24).
+- ~~Explicit approval to commit~~ — **DONE**: commit `1009d1e` on `main`
+  (10 files / 1331 insertions, "Add EXPERT solver: JWT algorithm confusion
+  with no exposed key"). Working tree clean. **Not pushed** — user publishes
+  from their Mac (branch is 1 commit ahead of origin/main).
 
 ## Open risks / notes
 
