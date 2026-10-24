@@ -1,0 +1,15 @@
+[project]
+name = "portswigger-jwt-algorithm-confusion-no-exposed-key"
+version = "0.1.0"
+description = "Autonomous solver for the PortSwigger 'JWT authentication bypass via algorithm confusion with no exposed key' (EXPERT) lab"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.31",
+]
+
+[project.scripts]
+solve = "solve:main"
+
+[tool.uv]
+package = false
