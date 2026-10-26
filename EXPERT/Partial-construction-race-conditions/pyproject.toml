@@ -1,0 +1,9 @@
+[project]
+name = "partial-construction-race"
+version = "1.0.0"
+description = "Automated solver for the PortSwigger 'Partial construction race conditions' lab"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "httpx>=0.28.1",
+]
