@@ -255,3 +255,9 @@ Temporary Items
 
 # Quick Look / Finder thumbnails
 .directory
+
+# Local credential / cookie jars (session cookies are secrets)
+cj.txt
+cookies.txt
+*.cookiejar
+cookie_jar.json

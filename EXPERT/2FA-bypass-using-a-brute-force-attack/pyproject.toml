@@ -1,0 +1,9 @@
+[project]
+name = "2fa-bruteforce"
+version = "1.0.0"
+description = "Automated solver for the PortSwigger '2FA bypass using a brute-force attack' lab"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "httpx[http2]>=0.28.1",
+]
