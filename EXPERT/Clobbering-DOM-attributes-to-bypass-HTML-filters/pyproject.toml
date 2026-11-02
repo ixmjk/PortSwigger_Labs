@@ -1,0 +1,9 @@
+[project]
+name = "clobbering-dom-attributes-bypass-html-filters"
+version = "1.0.0"
+description = "Automated solver for the PortSwigger 'Clobbering DOM attributes to bypass HTML filters' lab"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "httpx[http2]>=0.28.1",
+]

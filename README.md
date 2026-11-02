@@ -4,8 +4,8 @@
 
 ### One lab URL. One command. The right solution.
 
-[![Labs solved](https://img.shields.io/badge/Labs%20solved-9%20%2F%20274-FF6633?style=for-the-badge)](https://portswigger.net/web-security/all-labs)
-[![Expert solvers](https://img.shields.io/badge/Expert%20solvers-9-00A884?style=for-the-badge)](#-supported-labs)
+[![Labs solved](https://img.shields.io/badge/Labs%20solved-10%20%2F%20274-FF6633?style=for-the-badge)](https://portswigger.net/web-security/all-labs)
+[![Expert solvers](https://img.shields.io/badge/Expert%20solvers-10-00A884?style=for-the-badge)](#-supported-labs)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Powered by uv](https://img.shields.io/badge/Powered%20by-uv-5C3EE8?style=for-the-badge)](https://docs.astral.sh/uv/)
 [![Hermes Agent](https://img.shields.io/badge/AI%20assisted-Hermes%20Agent-7C60D5?style=for-the-badge)](https://github.com/NousResearch/hermes-agent)
@@ -20,7 +20,7 @@
 
 Rather than manually searching through scripts, the **universal launcher** reads the lab name from your active lab URL, identifies a matching solver, executes it in its own `uv` environment, and reports the result.
 
-**Current coverage: 9 of 274 labs (~3.28%)** — with nine supported **Expert** challenges. The denominator is based on PortSwigger's published Academy total, checked on **October 24, 2026**; the catalog changes over time.
+**Current coverage: 10 of 274 labs (~3.65%)** — with ten supported **Expert** challenges. The denominator is based on PortSwigger's published Academy total, checked on **October 24, 2026**; the catalog changes over time.
 
 ### ✨ Why use it?
 
@@ -63,6 +63,7 @@ If a lab is unsupported, ambiguous, expired, or unreachable, the launcher report
 | 🔴 **Expert** | [Exploiting server-side parameter pollution in a REST URL](https://portswigger.net/web-security/api-testing/server-side-parameter-pollution/lab-exploiting-server-side-parameter-pollution-in-rest-url) | REST path traversal + API spec discovery → admin account takeover |
 | 🔴 **Expert** | [Stealing OAuth access tokens via a proxy page](https://portswigger.net/web-security/oauth/lab-oauth-stealing-oauth-access-tokens-via-a-proxy-page) | OAuth redirect_uri traversal + postMessage token leak |
 | 🔴 **Expert** | [Reflected XSS protected by CSP, with CSP bypass](https://portswigger.net/web-security/cross-site-scripting/content-security-policy/lab-csp-bypass) | Reflected XSS + CSP header injection (`script-src-elem`) |
+| 🔴 **Expert** | [Clobbering DOM attributes to bypass HTML filters](https://portswigger.net/web-security/dom-based/dom-clobbering/lab-dom-clobbering-attributes-to-bypass-html-filters) | DOM clobbering + HTMLJanitor `attributes` bypass |
 
 Find their source code and case studies inside [`EXPERT/`](EXPERT/). The long-term target is **every Academy lab**, not just the Expert category.
 
