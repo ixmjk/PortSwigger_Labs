@@ -1,0 +1,9 @@
+[project]
+name = "reflected-xss-angularjs-sandbox-escape-without-strings"
+version = "1.0.0"
+description = "Automated solver for the PortSwigger 'Reflected XSS with AngularJS sandbox escape without strings' lab"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "httpx[http2]>=0.28.1",
+]
