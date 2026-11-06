@@ -4,8 +4,8 @@
 
 ### One lab URL. One command. The right solution.
 
-[![Labs solved](https://img.shields.io/badge/Labs%20solved-11%20%2F%20274-FF6633?style=for-the-badge)](https://portswigger.net/web-security/all-labs)
-[![Expert solvers](https://img.shields.io/badge/Expert%20solvers-11-00A884?style=for-the-badge)](#-supported-labs)
+[![Labs solved](https://img.shields.io/badge/Labs%20solved-12%20%2F%20274-FF6633?style=for-the-badge)](https://portswigger.net/web-security/all-labs)
+[![Expert solvers](https://img.shields.io/badge/Expert%20solvers-12-00A884?style=for-the-badge)](#-supported-labs)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Powered by uv](https://img.shields.io/badge/Powered%20by-uv-5C3EE8?style=for-the-badge)](https://docs.astral.sh/uv/)
 [![Hermes Agent](https://img.shields.io/badge/AI%20assisted-Hermes%20Agent-7C60D5?style=for-the-badge)](https://github.com/NousResearch/hermes-agent)
@@ -20,7 +20,7 @@
 
 Rather than manually searching through scripts, the **universal launcher** reads the lab name from your active lab URL, identifies a matching solver, executes it in its own `uv` environment, and reports the result.
 
-**Current coverage: 11 of 274 labs (~4.01%)** — with eleven supported **Expert** challenges. The denominator is based on PortSwigger's published Academy total, checked on **October 24, 2026**; the catalog changes over time.
+**Current coverage: 12 of 274 labs (~4.38%)** — with twelve supported **Expert** challenges. The denominator is based on PortSwigger's published Academy total, checked on **October 24, 2026**; the catalog changes over time.
 
 ### ✨ Why use it?
 
@@ -65,6 +65,7 @@ If a lab is unsupported, ambiguous, expired, or unreachable, the launcher report
 | 🔴 **Expert** | [Reflected XSS protected by CSP, with CSP bypass](https://portswigger.net/web-security/cross-site-scripting/content-security-policy/lab-csp-bypass) | Reflected XSS + CSP header injection (`script-src-elem`) |
 | 🔴 **Expert** | [Clobbering DOM attributes to bypass HTML filters](https://portswigger.net/web-security/dom-based/dom-clobbering/lab-dom-clobbering-attributes-to-bypass-html-filters) | DOM clobbering + HTMLJanitor `attributes` bypass |
 | 🔴 **Expert** | [Reflected XSS in a JavaScript URL with some characters blocked](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-javascript-url-some-characters-blocked) | `javascript:` URL reflection + character-filter bypass (`onerror=alert`, `/**/`) |
+| 🔴 **Expert** | [Reflected XSS with event handlers and href attributes blocked](https://portswigger.net/web-security/cross-site-scripting/contexts/lab-event-handlers-and-href-attributes-blocked) | SVG `<animate attributeName=href>` bypasses `on*`/`href` whitelist |
 
 Find their source code and case studies inside [`EXPERT/`](EXPERT/). The long-term target is **every Academy lab**, not just the Expert category.
 

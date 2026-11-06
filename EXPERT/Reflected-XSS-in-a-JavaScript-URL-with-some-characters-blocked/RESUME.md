@@ -12,6 +12,23 @@
 * Browser proof: clicking "Back to Blog" on the crafted URL alerts
   `Uncaught 1337`.
 
+## Re-verification, 2026-11-06 — instance `0a9e003c04d7504180f93036002a004f`
+
+* The instance arrived with progress already carried over from the solved lab
+  (`widgetcontainer-lab-status is-solved` / `<p>Solved</p>` on a cold GET, no
+  cookie), so this run cannot claim the flip: the solver correctly reports
+  `caused by solver: no (was already solved)`.
+* What *was* re-proven end-to-end on the new host: post id discovered at
+  runtime (2), query string reflected into `body:'…'` of the `javascript:`
+  back-link, filter control still deletes `( ) [ ]` and spaces, and the
+  parenthesis-free vector survives and percent-decodes to intact JS.
+* Solver run (lab folder): exit 0, 6 requests, 2.2 s.
+* Root launcher: exact folder-name match, exit 0, 6 requests, 2.3 s (2.7 s
+  total). Test suite: 27 passed / 0 failed.
+* Browser proof, same host: clicking "Back to Blog" fires `alert("Uncaught
+  1337")`; `fetch()` never runs because `window+''` throws while the arguments
+  are evaluated. Artifacts: `evidence/20261106T194036Z_*`.
+
 ## If this lab ever needs re-running on a fresh instance
 
 ```bash

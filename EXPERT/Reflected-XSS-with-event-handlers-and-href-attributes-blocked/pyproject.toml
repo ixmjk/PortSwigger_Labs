@@ -1,0 +1,9 @@
+[project]
+name = "reflected-xss-event-handlers-href-blocked"
+version = "1.0.0"
+description = "Automated solver for the PortSwigger 'Reflected XSS with event handlers and href attributes blocked' lab"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "httpx[http2]>=0.28.1",
+]
