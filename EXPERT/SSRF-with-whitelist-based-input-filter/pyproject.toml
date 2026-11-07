@@ -1,0 +1,9 @@
+[project]
+name = "ssrf-with-whitelist-based-input-filter"
+version = "1.0.0"
+description = "Automated solver for the PortSwigger 'SSRF with whitelist-based input filter' lab"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "httpx[http2]>=0.28.1",
+]
