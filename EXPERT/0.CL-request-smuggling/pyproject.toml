@@ -1,0 +1,7 @@
+[project]
+name = "0cl-request-smuggling"
+version = "1.0.0"
+description = "Automated solver for the PortSwigger '0.CL request smuggling' lab"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
