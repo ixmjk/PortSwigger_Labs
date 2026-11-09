@@ -1,0 +1,7 @@
+[project]
+name = "web-cache-poisoning-via-http-2-request-tunnelling"
+version = "1.0.0"
+description = "Automated solver for the PortSwigger 'Web cache poisoning via HTTP/2 request tunnelling' lab"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["h2>=4.1"]
