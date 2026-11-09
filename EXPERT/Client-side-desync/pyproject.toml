@@ -1,0 +1,8 @@
+[project]
+name = "client-side-desync-solver"
+version = "1.0.0"
+description = "Automated solver for the PortSwigger lab 'Client-side desync'"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31",
+]
