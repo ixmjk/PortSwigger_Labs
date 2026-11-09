@@ -4,8 +4,8 @@
 
 ### One lab URL. One command. The right solution.
 
-[![Labs solved](https://img.shields.io/badge/Labs%20solved-21%20%2F%20274-FF6633?style=for-the-badge)](https://portswigger.net/web-security/all-labs)
-[![Expert solvers](https://img.shields.io/badge/Expert%20solvers-21-00A884?style=for-the-badge)](#-supported-labs)
+[![Labs solved](https://img.shields.io/badge/Labs%20solved-22%20%2F%20274-FF6633?style=for-the-badge)](https://portswigger.net/web-security/all-labs)
+[![Expert solvers](https://img.shields.io/badge/Expert%20solvers-22-00A884?style=for-the-badge)](#-supported-labs)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Powered by uv](https://img.shields.io/badge/Powered%20by-uv-5C3EE8?style=for-the-badge)](https://docs.astral.sh/uv/)
 [![Hermes Agent](https://img.shields.io/badge/AI%20assisted-Hermes%20Agent-7C60D5?style=for-the-badge)](https://github.com/NousResearch/hermes-agent)
@@ -20,7 +20,7 @@
 
 Rather than manually searching through scripts, the **universal launcher** reads the lab name from your active lab URL, identifies a matching solver, executes it in its own `uv` environment, and reports the result.
 
-**Current coverage: 21 of 274 labs (~7.66%)** — with twenty-one supported **Expert** challenges. The denominator is based on PortSwigger's published Academy total, checked on **October 24, 2026**; the catalog changes over time.
+**Current coverage: 22 of 274 labs (~8.03%)** — with twenty-two supported **Expert** challenges. The denominator is based on PortSwigger's published Academy total, checked on **October 24, 2026**; the catalog changes over time.
 
 ### ✨ Why use it?
 
@@ -75,6 +75,7 @@ If a lab is unsupported, ambiguous, expired, or unreachable, the launcher report
 | 🔴 **Expert** | [SSRF with whitelist-based input filter](https://portswigger.net/web-security/ssrf/lab-ssrf-with-whitelist-filter) | Host whitelist bypass via double-encoded fragment + userinfo decoy |
 | 🔴 **Expert** | [Blind SSRF with Shellshock exploitation](https://portswigger.net/web-security/ssrf/blind/lab-shellshock-exploitation) | Referer-based blind SSRF + Shellshock RCE + Collaborator DNS exfiltration |
 | 🔴 **Expert** | [Exploiting HTTP request smuggling to perform web cache deception](https://portswigger.net/web-security/request-smuggling/exploiting/lab-perform-web-cache-deception) | CL.TE desync makes a victim's static-file request cache their `/my-account` page |
+| 🔴 **Expert** | [Bypassing access controls via HTTP/2 request tunnelling](https://portswigger.net/web-security/request-smuggling/advanced/request-tunnelling/lab-request-smuggling-h2-bypass-access-controls-via-request-tunnelling) | HTTP/2 downgrade + CRLF in header name → leak front-end auth headers and tunnel `/admin` |
 
 Find their source code and case studies inside [`EXPERT/`](EXPERT/). The long-term target is **every Academy lab**, not just the Expert category.
 
