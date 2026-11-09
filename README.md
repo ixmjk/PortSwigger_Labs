@@ -4,8 +4,8 @@
 
 ### One lab URL. One command. The right solution.
 
-[![Labs solved](https://img.shields.io/badge/Labs%20solved-19%20%2F%20274-FF6633?style=for-the-badge)](https://portswigger.net/web-security/all-labs)
-[![Expert solvers](https://img.shields.io/badge/Expert%20solvers-19-00A884?style=for-the-badge)](#-supported-labs)
+[![Labs solved](https://img.shields.io/badge/Labs%20solved-20%20%2F%20274-FF6633?style=for-the-badge)](https://portswigger.net/web-security/all-labs)
+[![Expert solvers](https://img.shields.io/badge/Expert%20solvers-20-00A884?style=for-the-badge)](#-supported-labs)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Powered by uv](https://img.shields.io/badge/Powered%20by-uv-5C3EE8?style=for-the-badge)](https://docs.astral.sh/uv/)
 [![Hermes Agent](https://img.shields.io/badge/AI%20assisted-Hermes%20Agent-7C60D5?style=for-the-badge)](https://github.com/NousResearch/hermes-agent)
@@ -20,7 +20,7 @@
 
 Rather than manually searching through scripts, the **universal launcher** reads the lab name from your active lab URL, identifies a matching solver, executes it in its own `uv` environment, and reports the result.
 
-**Current coverage: 19 of 274 labs (~6.93%)** — with nineteen supported **Expert** challenges. The denominator is based on PortSwigger's published Academy total, checked on **October 24, 2026**; the catalog changes over time.
+**Current coverage: 20 of 274 labs (~7.30%)** — with twenty supported **Expert** challenges. The denominator is based on PortSwigger's published Academy total, checked on **October 24, 2026**; the catalog changes over time.
 
 ### ✨ Why use it?
 
@@ -55,6 +55,7 @@ If a lab is unsupported, ambiguous, expired, or unreachable, the launcher report
 | Difficulty | Lab | Topic |
 |:--:|---|---|
 | 🔴 **Expert** | [0.CL request smuggling](https://portswigger.net/web-security/request-smuggling/advanced/lab-request-smuggling-0cl-request-smuggling) | 0.CL double-desync (hidden `Content-Length`) + `User-Agent` XSS delivered to the simulated victim |
+| 🔴 **Expert** | [Exploiting HTTP request smuggling to perform web cache poisoning](https://portswigger.net/web-security/request-smuggling/exploiting/lab-perform-web-cache-poisoning) | CL.TE desync → poisoned `tracking.js` cache entry redirects the victim to exploit-server JavaScript |
 | 🔴 **Expert** | [Server-side pause-based request smuggling](https://portswigger.net/web-security/request-smuggling/browser/pause-based-desync/lab-server-side-pause-based-request-smuggling) | HTTP request desynchronization |
 | 🔴 **Expert** | [Combining web cache poisoning vulnerabilities](https://portswigger.net/web-security/web-cache-poisoning/exploiting-design-flaws/lab-web-cache-poisoning-combining-vulnerabilities) | Chained web cache poisoning |
 | 🔴 **Expert** | [JWT authentication bypass via algorithm confusion with no exposed key](https://portswigger.net/web-security/jwt/algorithm-confusion/lab-jwt-authentication-bypass-via-algorithm-confusion-with-no-exposed-key) | JWT algorithm confusion + RSA modulus recovery |
